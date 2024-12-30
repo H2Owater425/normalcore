@@ -1,0 +1,14 @@
+name: Normalcore
+version: '0.0.1-SNAPSHOT'
+main: kr.dhmo.normalcore.Normalcore
+api-version: '1.20'
+author: H2Owater425
+description: Normalcore
+load: STARTUP
+prefix: Normalcore
+commands:
+  life:
+    description: Life
+  configuration:
+    description: Configuration
+    aliases: [config]
