@@ -27,7 +27,7 @@ final public class LifeCommand implements CommandExecutor {
 
                     return true;
                 } else {
-                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "CommandSender must be player");
+                    commandSender.sendMessage(Normalcore.errorColor + "CommandSender must be player");
 
                     return false;
                 }
@@ -80,7 +80,7 @@ final public class LifeCommand implements CommandExecutor {
 
                                 return true;
                             } else {
-                                commandSender.sendMessage(Normalcore.ERROR_COLOR + "You must have " + FormatUtility.pluralize(remainingLifePrice, "more enchanted golden apple"));
+                                commandSender.sendMessage(Normalcore.errorColor + "You must have " + FormatUtility.pluralize(remainingLifePrice, "more enchanted golden apple"));
 
                                 return false;
                             }
@@ -98,20 +98,20 @@ final public class LifeCommand implements CommandExecutor {
 
                                 return true;
                             } else {
-                                commandSender.sendMessage(Normalcore.ERROR_COLOR + "You must have at least 1 life");
+                                commandSender.sendMessage(Normalcore.errorColor + "You must have at least 1 life");
 
                                 return false;
                             }
                         }
 
                         default: {
-                            commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[0] must be deposit or withdraw");
+                            commandSender.sendMessage(Normalcore.errorColor + "Arguments[0] must be deposit or withdraw");
 
                             return false;
                         }
                     }
                 } else {
-                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "CommandSender must be player");
+                    commandSender.sendMessage(Normalcore.errorColor + "CommandSender must be player");
 
                     return false;
                 }
@@ -132,12 +132,12 @@ final public class LifeCommand implements CommandExecutor {
 
                                 return true;
                             } else {
-                                commandSender.sendMessage(Normalcore.ERROR_COLOR + "Argument[1] must be valid player");
+                                commandSender.sendMessage(Normalcore.errorColor + "Argument[1] must be valid player");
 
                                 return false;
                             }
                         } else {
-                            commandSender.sendMessage(Normalcore.ERROR_COLOR + "Argument[1] must be self");
+                            commandSender.sendMessage(Normalcore.errorColor + "Argument[1] must be self");
 
                             return false;
                         }
@@ -178,29 +178,29 @@ final public class LifeCommand implements CommandExecutor {
 
                                         return true;
                                     } else {
-                                        player.sendMessage(Normalcore.ERROR_COLOR + "Argument[1] must be valid player");
+                                        player.sendMessage(Normalcore.errorColor + "Argument[1] must be valid player");
 
                                         return false;
                                     }
                                 } else {
-                                    player.sendMessage(Normalcore.ERROR_COLOR + "Argument[1] must not be yourself");
+                                    player.sendMessage(Normalcore.errorColor + "Argument[1] must not be yourself");
 
                                     return false;
                                 }
                             } else {
-                                commandSender.sendMessage(Normalcore.ERROR_COLOR + "You must have at least 1 life");
+                                commandSender.sendMessage(Normalcore.errorColor + "You must have at least 1 life");
 
                                 return false;
                             }
                         } else {
-                            commandSender.sendMessage(Normalcore.ERROR_COLOR + "CommandSender must be player");
+                            commandSender.sendMessage(Normalcore.errorColor + "CommandSender must be player");
 
                             return false;
                         }
                     }
 
                     default: {
-                        commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[0] must be get or remit");
+                        commandSender.sendMessage(Normalcore.errorColor + "Arguments[0] must be get or remit");
 
                         return false;
                     }
@@ -227,24 +227,24 @@ final public class LifeCommand implements CommandExecutor {
                                 throw new NumberFormatException();
                             }
                         } catch(Exception exception) {
-                            commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[2] must be positive integer or zero");
+                            commandSender.sendMessage(Normalcore.errorColor + "Arguments[2] must be positive integer or zero");
 
                             return false;
                         }
                     } else {
-                        commandSender.sendMessage(Normalcore.ERROR_COLOR + "Argument[1] must be valid player");
+                        commandSender.sendMessage(Normalcore.errorColor + "Argument[1] must be valid player");
 
                         return false;
                     }
                 } else {
-                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "CommandSender must be op");
+                    commandSender.sendMessage(Normalcore.errorColor + "CommandSender must be op");
 
                     return false;
                 }
             }
 
             default: {
-                commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments.length must between 0 and 3");
+                commandSender.sendMessage(Normalcore.errorColor + "Arguments.length must between 0 and 3");
 
                 return false;
             }

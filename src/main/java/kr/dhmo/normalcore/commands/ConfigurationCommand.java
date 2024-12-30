@@ -43,7 +43,7 @@ final public class ConfigurationCommand implements CommandExecutor {
                         }
 
                         default: {
-                            commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[0] must be save or reload");
+                            commandSender.sendMessage(Normalcore.errorColor + "Arguments[0] must be save or reload");
 
                             return false;
                         }
@@ -70,13 +70,13 @@ final public class ConfigurationCommand implements CommandExecutor {
                                 yield true;
                             }
                             default -> {
-                                commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[1] must be one of respawnWaitingTime, respawnPenaltyTime, lifePrice");
+                                commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be one of respawnWaitingTime, respawnPenaltyTime, lifePrice");
 
                                 yield false;
                             }
                         };
                     } else {
-                        commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[0] must be get");
+                        commandSender.sendMessage(Normalcore.errorColor + "Arguments[0] must be get");
 
                         return false;
                     }
@@ -99,7 +99,7 @@ final public class ConfigurationCommand implements CommandExecutor {
                                         throw new NumberFormatException();
                                     }
                                 } catch(Exception exception) {
-                                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[2] must be positive long or zero");
+                                    commandSender.sendMessage(Normalcore.errorColor + "Arguments[2] must be positive long or zero");
 
                                     return false;
                                 }
@@ -118,7 +118,7 @@ final public class ConfigurationCommand implements CommandExecutor {
                                         throw new NumberFormatException();
                                     }
                                 } catch(Exception exception) {
-                                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[2] must be positive integer or zero");
+                                    commandSender.sendMessage(Normalcore.errorColor + "Arguments[2] must be positive integer or zero");
 
                                     return false;
                                 }
@@ -137,33 +137,33 @@ final public class ConfigurationCommand implements CommandExecutor {
                                         throw new NumberFormatException();
                                     }
                                 } catch(Exception exception) {
-                                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[2] must be positive integer or zero");
+                                    commandSender.sendMessage(Normalcore.errorColor + "Arguments[2] must be positive integer or zero");
 
                                     return false;
                                 }
                             }
 
                             default: {
-                                commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[1] must be one of respawnWaitingTime, respawnPenaltyTime, lifePrice");
+                                commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be one of respawnWaitingTime, respawnPenaltyTime, lifePrice");
 
                                 return false;
                             }
                         }
                     } else {
-                        commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments[1] must be set");
+                        commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be set");
 
                         return false;
                     }
                 }
 
                 default: {
-                    commandSender.sendMessage(Normalcore.ERROR_COLOR + "Arguments.length must between 0 and 3");
+                    commandSender.sendMessage(Normalcore.errorColor + "Arguments.length must between 0 and 3");
 
                     return false;
                 }
             }
         } else {
-            commandSender.sendMessage(Normalcore.ERROR_COLOR + "CommandSender must be op");
+            commandSender.sendMessage(Normalcore.errorColor + "CommandSender must be op");
 
             return false;
         }

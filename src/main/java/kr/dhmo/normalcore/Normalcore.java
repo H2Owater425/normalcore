@@ -7,12 +7,14 @@ import kr.dhmo.normalcore.commands.tabCompleters.LifeCommandTabCompleter;
 import kr.dhmo.normalcore.listeners.PlayerDeathListener;
 import kr.dhmo.normalcore.listeners.PlayerGamemodeChangeListener;
 import kr.dhmo.normalcore.listeners.PlayerJoinListener;
+import kr.dhmo.normalcore.listeners.PlayerQuitListener;
 import kr.dhmo.normalcore.managers.ConfigurationManager;
 import kr.dhmo.normalcore.managers.PlayersManager;
 import kr.dhmo.normalcore.utilities.FormatUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
+import org.bukkit.ServerTickManager;
 import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.PluginManager;
@@ -27,18 +29,23 @@ import java.util.UUID;
 import java.util.logging.Logger;
 
 public final class Normalcore extends JavaPlugin {
-    final public static String ERROR_COLOR = "§c";
+    final public static String errorColor = "§c";
+    final private static ServerTickManager serverTickManager = Bukkit.getServerTickManager();
     private static Normalcore instance;
+
+    public static void setServerTickFrozen(boolean isFreeze) {
+        Normalcore.serverTickManager.setFrozen(isFreeze);
+    }
 
     public static void respawn(@NotNull Player player) {
         new BukkitRunnable() {
             public void run() {
                 final UUID playerUniqueId = player.getUniqueId();
                 final int respawnPenaltyTime = ConfigurationManager.getRespawnPenaltyTime() * 20;
-                Location location = player.getBedSpawnLocation();
+                Location location = player.getRespawnLocation();
 
                 if(location == null) {
-                    location = Bukkit.getWorlds().get(0).getSpawnLocation();
+                    location = Bukkit.getWorlds().getFirst().getSpawnLocation();
                 }
 
                 PlayersManager.setLastDeathAt(playerUniqueId, 0);
@@ -46,9 +53,11 @@ public final class Normalcore extends JavaPlugin {
                 player.spigot().respawn();
                 player.setGameMode(GameMode.SURVIVAL);
                 player.teleport(location);
+
+
                 player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1200, 1, false, false));
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_DIGGING, respawnPenaltyTime, 0, false, false));
-                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, respawnPenaltyTime, 2, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, respawnPenaltyTime, 0, false, false));
+                player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, respawnPenaltyTime, 2, false, false));
                 player.sendMessage("You have " + FormatUtility.pluralize(PlayersManager.getLife(playerUniqueId), "life") + " left");
             }
         }.runTask(Normalcore.instance);
@@ -101,6 +110,7 @@ public final class Normalcore extends JavaPlugin {
         Normalcore.pluginManager.registerEvents(new PlayerDeathListener(), this);
         Normalcore.pluginManager.registerEvents(new PlayerGamemodeChangeListener(), this);
         Normalcore.pluginManager.registerEvents(new PlayerJoinListener(), this);
+        Normalcore.pluginManager.registerEvents(new PlayerQuitListener(), this);
 
         new BukkitRunnable() {
             @Override

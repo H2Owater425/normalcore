@@ -2,6 +2,7 @@ package kr.dhmo.normalcore.listeners;
 
 import kr.dhmo.normalcore.Normalcore;
 import kr.dhmo.normalcore.managers.PlayersManager;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -10,9 +11,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.UUID;
 
-public class PlayerJoinListener implements Listener {
+final public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
+        Normalcore.setServerTickFrozen(false);
+
         final Player player = event.getPlayer();
         final UUID playerUniqueId = player.getUniqueId();
 
