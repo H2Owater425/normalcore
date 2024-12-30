@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 final public class PlayerQuitListener implements Listener {
     @EventHandler
     public void onPlayerQuit(PlayerQuitEvent event) {
-        if(Bukkit.getOnlinePlayers().isEmpty()) {
+        if(Bukkit.getOnlinePlayers().size() == 1) {
             Normalcore.setServerTickFrozen(true);
         }
     }

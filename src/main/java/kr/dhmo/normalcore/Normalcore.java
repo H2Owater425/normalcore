@@ -54,7 +54,6 @@ public final class Normalcore extends JavaPlugin {
                 player.setGameMode(GameMode.SURVIVAL);
                 player.teleport(location);
 
-
                 player.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 1200, 1, false, false));
                 player.addPotionEffect(new PotionEffect(PotionEffectType.MINING_FATIGUE, respawnPenaltyTime, 0, false, false));
                 player.addPotionEffect(new PotionEffect(PotionEffectType.SLOWNESS, respawnPenaltyTime, 2, false, false));
@@ -124,6 +123,8 @@ public final class Normalcore extends JavaPlugin {
                 }
             }
         }.runTaskTimerAsynchronously(this, 0L, 20L);
+
+        Normalcore.setServerTickFrozen(true);
 
         Normalcore.logger.info("Enabled plugin");
     }
