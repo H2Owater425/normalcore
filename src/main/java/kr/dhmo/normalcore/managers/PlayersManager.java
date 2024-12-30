@@ -91,9 +91,6 @@ final public class PlayersManager {
         return offlinePlayerNames;
     }
 
-//    public static void respawn(@NotNull Player player) {
-//    }
-
     private static long lastModifiedAt;
     private static File file;
     private static FileConfiguration fileConfiguration;
