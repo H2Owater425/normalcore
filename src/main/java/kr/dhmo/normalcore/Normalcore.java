@@ -37,6 +37,10 @@ public final class Normalcore extends JavaPlugin {
         Normalcore.serverTickManager.setFrozen(isFrozen);
     }
 
+    public static int getOnlinePlayerCount() {
+        return Bukkit.getOnlinePlayers().size();
+    }
+
     public static void respawn(@NotNull Player player) {
         new BukkitRunnable() {
             public void run() {
@@ -124,7 +128,7 @@ public final class Normalcore extends JavaPlugin {
             }
         }.runTaskTimerAsynchronously(this, 0L, 20L);
 
-        Normalcore.setServerTickFrozen(true);
+        Normalcore.setServerTickFrozen(Normalcore.getOnlinePlayerCount() == 0);
 
         Normalcore.logger.info("Enabled plugin");
     }
