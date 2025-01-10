@@ -25,7 +25,7 @@ import java.util.UUID;
 final public class PlayersManager {
     static private final class Timer {
         final private UUID playerUniqueId;
-        final private long respawnWaitingTime;
+        final private long respawnDelayTime;
         final private long lastDeathAt;
         final private BossBar bossBar;
 
@@ -36,9 +36,9 @@ final public class PlayersManager {
 
         public Timer(@NotNull Player player) {
             this.playerUniqueId = player.getUniqueId();
-            this.respawnWaitingTime = ConfigurationManager.getRespawnWaitingTime() * 1000;
+            this.respawnDelayTime = ConfigurationManager.getRespawnDelayTime() * 1000;
             this.lastDeathAt = PlayersManager.getLastDeathAt(this.playerUniqueId);
-            this.bossBar = Bukkit.createBossBar(Timer.getTitle(respawnWaitingTime), BarColor.PURPLE, BarStyle.SOLID);
+            this.bossBar = Bukkit.createBossBar(Timer.getTitle(respawnDelayTime), BarColor.PURPLE, BarStyle.SOLID);
 
             this.setPlayer(player);
         }
@@ -49,10 +49,10 @@ final public class PlayersManager {
         }
 
         public boolean tick() {
-            final long remainingTime = this.respawnWaitingTime - System.currentTimeMillis() + this.lastDeathAt;
+            final long remainingTime = this.respawnDelayTime - System.currentTimeMillis() + this.lastDeathAt;
 
             if(remainingTime > 0) {
-                this.bossBar.setProgress((double)remainingTime / this.respawnWaitingTime);
+                this.bossBar.setProgress((double)remainingTime / this.respawnDelayTime);
                 this.bossBar.setTitle(Timer.getTitle(remainingTime));
 
                 return false;

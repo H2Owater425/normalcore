@@ -14,7 +14,7 @@ final public class ConfigurationCommand implements CommandExecutor {
             switch(arguments.length) {
                 // /configuration
                 case 0: {
-                    commandSender.sendMessage("respawnWaitingTime: " + ConfigurationManager.getRespawnWaitingTime() + "\nlifePrice: " + ConfigurationManager.getLifePrice());
+                    commandSender.sendMessage("respawnDelayTime: " + ConfigurationManager.getRespawnDelayTime() + "\nrespawnPenaltyTime: " + ConfigurationManager.getRespawnPenaltyTime() + "\nlifePrice: " + ConfigurationManager.getLifePrice());
 
                     return true;
                 }
@@ -54,8 +54,8 @@ final public class ConfigurationCommand implements CommandExecutor {
                 case 2: {
                     if(arguments[0].equalsIgnoreCase("get")) {
                         return switch (arguments[1].toLowerCase()) {
-                            case "respawnwaitingtime" -> {
-                                commandSender.sendMessage("respawnWaitingTime: " + ConfigurationManager.getRespawnWaitingTime());
+                            case "respawndelaytime" -> {
+                                commandSender.sendMessage("respawnDelayTime: " + ConfigurationManager.getRespawnDelayTime());
 
                                 yield true;
                             }
@@ -70,7 +70,7 @@ final public class ConfigurationCommand implements CommandExecutor {
                                 yield true;
                             }
                             default -> {
-                                commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be one of respawnWaitingTime, respawnPenaltyTime, lifePrice");
+                                commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be one of respawnDelayTime, respawnPenaltyTime, lifePrice");
 
                                 yield false;
                             }
@@ -86,13 +86,13 @@ final public class ConfigurationCommand implements CommandExecutor {
                 case 3: {
                     if(arguments[0].equalsIgnoreCase("set")) {
                         switch(arguments[1].toLowerCase()) {
-                            case "respawnwaitingtime": {
+                            case "respawndelaytime": {
                                 try {
-                                    final long respawnWaitingTime = Long.parseLong(arguments[2], 10);
+                                    final long respawnDelayTime = Long.parseLong(arguments[2], 10);
 
-                                    if(respawnWaitingTime >= 0) {
-                                        ConfigurationManager.setRespawnWaitingTime(respawnWaitingTime);
-                                        commandSender.sendMessage("respawnWaitingTime: " + respawnWaitingTime);
+                                    if(respawnDelayTime >= 0) {
+                                        ConfigurationManager.setRespawnDelayTime(respawnDelayTime);
+                                        commandSender.sendMessage("respawnDelayTime: " + respawnDelayTime);
 
                                         return true;
                                     } else {
@@ -144,7 +144,7 @@ final public class ConfigurationCommand implements CommandExecutor {
                             }
 
                             default: {
-                                commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be one of respawnWaitingTime, respawnPenaltyTime, lifePrice");
+                                commandSender.sendMessage(Normalcore.errorColor + "Arguments[1] must be one of respawnDelayTime, respawnPenaltyTime, lifePrice");
 
                                 return false;
                             }

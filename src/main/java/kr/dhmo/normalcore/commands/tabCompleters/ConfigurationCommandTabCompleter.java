@@ -15,7 +15,7 @@ public class ConfigurationCommandTabCompleter implements TabCompleter {
             return switch (arguments.length) {
                 case 1 -> List.of("save", "reload", "get", "set");
                 case 2 -> switch (arguments[0]) {
-                    case "get", "set" -> List.of("respawnWaitingTime", "respawnPenaltyTime", "lifePrice");
+                    case "get", "set" -> List.of("respawnDelayTime", "respawnPenaltyTime", "lifePrice");
                     default -> null;
                 };
                 default -> null;

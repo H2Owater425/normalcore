@@ -42,13 +42,13 @@ final public class ConfigurationManager {
         ConfigurationManager.lastModifiedAt = System.currentTimeMillis();
     }
 
-    public static void setRespawnWaitingTime(long respawnWaitingTime) {
-        ConfigurationManager.fileConfiguration.set("respawnWaitingTime", respawnWaitingTime > 0 && respawnWaitingTime != 10800 ? respawnWaitingTime : null);
+    public static void setRespawnDelayTime(long respawnDelayTime) {
+        ConfigurationManager.fileConfiguration.set("respawnDelayTime", respawnDelayTime > 0 && respawnDelayTime != 10800 ? respawnDelayTime : null);
         ConfigurationManager.updateLastModifiedAt();
     }
 
-    public static long getRespawnWaitingTime() {
-        return ConfigurationManager.fileConfiguration.getLong("respawnWaitingTime", 10800);
+    public static long getRespawnDelayTime() {
+        return ConfigurationManager.fileConfiguration.getLong("respawnDelayTime", 10800);
     }
 
     public static void setRespawnPenaltyTime(int respawnPenaltyTime) {
