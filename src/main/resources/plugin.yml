@@ -1,7 +1,7 @@
 name: Normalcore
-version: '0.0.1-SNAPSHOT'
+version: ${version}
 main: kr.dhmo.normalcore.Normalcore
-api-version: '1.21'
+api-version: 1.21
 author: H2Owater425
 description: Normal-difficulty hardcore mode
 load: STARTUP
