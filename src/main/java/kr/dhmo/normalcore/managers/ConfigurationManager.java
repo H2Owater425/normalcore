@@ -25,14 +25,14 @@ final public class ConfigurationManager {
     public static void save() throws IOException {
         if(ConfigurationManager.lastModifiedAt >= file.lastModified()) {
             ConfigurationManager.fileConfiguration.save(ConfigurationManager.file);
-            Normalcore.logger.info("Player data has been saved");
+            Normalcore.logger.info("Configuration data has been saved");
 
 //            return true;
         } else {
             final String path = ConfigurationManager.file.getAbsolutePath();
 
             ConfigurationManager.fileConfiguration.save(new File(path.substring(0, path.length() - 3) + System.currentTimeMillis() + ".yml"));
-            Normalcore.logger.warning("Player data backup has been saved instead");
+            Normalcore.logger.warning("Configuration data backup has been saved instead");
 
 //            return false;
         }
