@@ -33,8 +33,8 @@ public final class Normalcore extends JavaPlugin {
     final private static ServerTickManager serverTickManager = Bukkit.getServerTickManager();
     private static Normalcore instance;
 
-    public static void setServerTickFrozen(boolean isFreeze) {
-        Normalcore.serverTickManager.setFrozen(isFreeze);
+    public static void setServerTickFrozen(boolean isFrozen) {
+        Normalcore.serverTickManager.setFrozen(isFrozen);
     }
 
     public static void respawn(@NotNull Player player) {
