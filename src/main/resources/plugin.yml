@@ -3,7 +3,7 @@ version: '0.0.1-SNAPSHOT'
 main: kr.dhmo.normalcore.Normalcore
 api-version: '1.21'
 author: H2Owater425
-description: Normal difficulty hardcore mode
+description: Normal-difficulty hardcore mode
 load: STARTUP
 prefix: Normalcore
 commands:
